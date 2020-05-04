@@ -252,6 +252,5 @@ async def on_message(message): # on_message() event : when the bot has recieved 
                 await message.channel.send("Wrong Summoner Nickname", embed=embed)   
 
                 
-                    
-client.run("token")
-
+access_token = os.environ["BOT_TOKEN"]
+client.run(access_token)
