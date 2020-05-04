@@ -189,7 +189,7 @@ async def on_message(message): # on_message() event : when the bot has recieved 
                                     inline=False)
                     embed.add_field(name="솔로랭크" +SoloRankTier, value=SoloRankPointAndWinRatio, inline=False)
                     embed.add_field(name="자유랭크 : Unranked", value="Unranked", inline=False)
-                    embed.add_field(name="모스트 챔피언 : " + mostUsedChampion,
+                    embed.add_field(name="자주 사용하는 챔피언 : " + mostUsedChampion,
                                     value="KDA : " + mostUsedChampionKDA + " / " + "winrate : " + mostUsedChampionWinRate,
                                     inline=False)
                     embed.set_thumbnail(url='https:' + RankMedal[0]['src'])
