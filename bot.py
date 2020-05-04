@@ -253,4 +253,4 @@ async def on_message(message): # on_message() event : when the bot has recieved 
 
                 
                     
-client.run("NzA2NzE2NjQ3NzI1MDcyNDA0.Xq-TOA.5aQJKlRhbMYID1r8x-5fiywJNe8")
+client.run("")
