@@ -1,0 +1,7 @@
+discord.py
+discord.py[voice]
+urllib3
+bs4
+youtube_dl
+requests
+captcha
