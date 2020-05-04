@@ -114,7 +114,7 @@ async def on_message(message): # on_message() event : when the bot has recieved 
             embed.add_field(name="해당 닉네임의 소환사가 존재하지 않습니다.", value="소환사 이름을 확인해주세요", inline=False)
             embed.set_footer(text='Service provided by sketa.',
                              icon_url='https://cdn.discordapp.com/attachments/702316283659550740/706160324260266095/2424b25e9404216025533fc240e33acd.jpg')
-            await message.channel.send("Error : Non existing Summoner ", embed=embed)
+            await message.channel.send(" ", embed=embed)
         else:
             try:
                 # Scrape Summoner's Rank information
@@ -142,7 +142,7 @@ async def on_message(message): # on_message() event : when the bot has recieved 
                     embed.set_thumbnail(url='https:' + RankMedal[0]['src'])
                     embed.set_footer(text='Service provided by sketa.',
                                      icon_url='https://cdn.discordapp.com/attachments/702316283659550740/706160324260266095/2424b25e9404216025533fc240e33acd.jpg')
-                    await message.channel.send( playerNickname + "님의 전적", embed=embed)
+                    await message.channel.send(" ", embed=embed)
 
                 # 솔로랭크 기록이 없는경우
                 elif len(solorank_Point_and_winratio) == 0:
@@ -163,12 +163,12 @@ async def on_message(message): # on_message() event : when the bot has recieved 
                     embed.add_field(name="솔로랭크 : Unranked", value="Unranked", inline=False)
                     embed.add_field(name="자유랭크" + FlexRankTier, value=FlexRankPointAndWinRatio, inline=False)
                     embed.add_field(name="자주 사용하는 챔피언 : " + mostUsedChampion,
-                                    value="KDA : " + mostUsedChampionKDA + " / " + " 승률 : " + mostUsedChampionWinRate,
+                                    value="KDA : " + mostUsedChampionKDA + " / " + " winrate : " + mostUsedChampionWinRate,
                                     inline=False)
                     embed.set_thumbnail(url='https:' + RankMedal[1]['src'])
                     embed.set_footer(text='Service provided by sketa.',
                                      icon_url='https://cdn.discordapp.com/attachments/702316283659550740/706160324260266095/2424b25e9404216025533fc240e33acd.jpg')
-                    await message.channel.send( playerNickname + "님의 전적을 검색", embed=embed)
+                    await message.channel.send(" ", embed=embed)
 
                 # 자유랭크 기록이 없는경우
                 elif len(flexrank_Point_and_winratio) == 0:
@@ -190,12 +190,12 @@ async def on_message(message): # on_message() event : when the bot has recieved 
                     embed.add_field(name="솔로랭크" +SoloRankTier, value=SoloRankPointAndWinRatio, inline=False)
                     embed.add_field(name="자유랭크 : Unranked", value="Unranked", inline=False)
                     embed.add_field(name="모스트 챔피언 : " + mostUsedChampion,
-                                    value="KDA : " + mostUsedChampionKDA + " / " + "승률 : " + mostUsedChampionWinRate,
+                                    value="KDA : " + mostUsedChampionKDA + " / " + "winrate : " + mostUsedChampionWinRate,
                                     inline=False)
                     embed.set_thumbnail(url='https:' + RankMedal[0]['src'])
                     embed.set_footer(text='Service provided by sketa.',
                                      icon_url='https://cdn.discordapp.com/attachments/702316283659550740/706160324260266095/2424b25e9404216025533fc240e33acd.jpg')
-                    await message.channel.send( playerNickname + "님의 전적입니다.", embed=embed)
+                    await message.channel.send(" ", embed=embed)
                 # 두가지 유형의 랭크 모두 완료된사람
                 else:
                     # 더 높은 티어를 thumbnail에 안착
@@ -203,10 +203,10 @@ async def on_message(message): # on_message() event : when the bot has recieved 
                     flexrankmedal = RankMedal[1]['src'].split('/')[-1].split('?')[0].split('.')[0].split('_')
 
                     # Make State
-                    SoloRankTier = solorank_Types_and_Tier_Info[0] + ' : ' + solorank_Types_and_Tier_Info[1]
+                    SoloRankTier = ' : ' + solorank_Types_and_Tier_Info[1]
                     SoloRankPointAndWinRatio = solorank_Point_and_winratio[0] + "/ " + solorank_Point_and_winratio[
                         1] + " " + solorank_Point_and_winratio[2] + " /" + solorank_Point_and_winratio[3]
-                    FlexRankTier = flexrank_Types_and_Tier_Info[0] + ' : ' + flexrank_Types_and_Tier_Info[1]
+                    FlexRankTier = ' : ' + flexrank_Types_and_Tier_Info[1]
                     FlexRankPointAndWinRatio = flexrank_Types_and_Tier_Info[2] + " /" + flexrank_Types_and_Tier_Info[-1]
 
                     # most Used Champion Information : Champion Name, KDA, Win Rate
@@ -221,10 +221,10 @@ async def on_message(message): # on_message() event : when the bot has recieved 
                     embed = discord.Embed(title="소환사 전적검색", description="", color=0x5CD1E5)
                     embed.add_field(name="해당 전적은 op.gg 에서 가져왔습니다", value=opggsummonersearch + playerNickname,
                                     inline=False)
-                    embed.add_field(name=SoloRankTier, value=SoloRankPointAndWinRatio, inline=False)
-                    embed.add_field(name=FlexRankTier, value=FlexRankPointAndWinRatio, inline=False)
+                    embed.add_field(name='솔로랭크 : ' + SoloRankTier, value=SoloRankPointAndWinRatio, inline=False)
+                    embed.add_field(name='자유랭크 : ' + FlexRankTier, value=FlexRankPointAndWinRatio, inline=False)
                     embed.add_field(name="자주 사용하는 챔피언 : " + mostUsedChampion,
-                                    value="KDA : " + mostUsedChampionKDA + " / " + " 승률 : " + mostUsedChampionWinRate,
+                                    value="KDA : " + mostUsedChampionKDA + " / " + " winrate : " + mostUsedChampionWinRate,
                                     inline=False)
                     if cmpTier == 0:
                         embed.set_thumbnail(url='https:' + RankMedal[0]['src'])
@@ -240,7 +240,7 @@ async def on_message(message): # on_message() event : when the bot has recieved 
 
                     embed.set_footer(text='Service provided by sketa.',
                                      icon_url='https://cdn.discordapp.com/attachments/702316283659550740/706160324260266095/2424b25e9404216025533fc240e33acd.jpg')
-                    await message.channel.send( playerNickname + "님의 전적", embed=embed)
+                    await message.channel.send(" ", embed=embed)
             except HTTPError as e:
                 embed = discord.Embed(title="소환사 전적검색 실패", description="", color=0x5CD1E5)
                 embed.add_field(name="", value="올바르지 않은 소환사 이름입니다. 다시 확인해주세요!", inline=False)
