@@ -1,16 +1,18 @@
-# To make a discord bot you need to download discord.py with pip
-#-*- coding: utf-8 -*-
 import discord
 import asyncio
 import os
 from discord.ext import commands
+import urllib
 from urllib.request import URLError
 from urllib.request import HTTPError
 from urllib.request import urlopen
+from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup
 from urllib.parse import quote
 import re # Regex for youtube link
 import warnings
+import requests
+import time
 
 client = discord.Client() # Create Instance of Client. This Client is discord server's connection to Discord Room
 
