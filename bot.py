@@ -253,6 +253,10 @@ async def on_message(message): # on_message() event : when the bot has recieved 
                 embed.add_field(name="???", value="올바르지 않은 소환사 이름입니다. 다시 확인해주세요!", inline=False)
                 await message.channel.send("Wrong Summoner Nickname", embed=embed)   
 
+@client.event
+async def on_message(message):
+    if message.content.startswith("!사이트"):
+        await message.channel.send("https://op.gg/")
 
 access_token = os.environ["BOT_TOKEN"]
 client.run(access_token)
