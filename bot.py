@@ -12,6 +12,8 @@ import warnings
 
 client = discord.Client() # Create Instance of Client. This Client is discord server's connection to Discord Room
 
+badwords = ["개새끼","보지","꺼져","새끼","느금마","ㅅㅂ","ㄲㅈ","ㅂㅅ","ㅄ","시1발","시바","ㅈ같네","븅신","니애미","니애미 창년","씨발","좆","지랄","염병","야발","뻑규","뻑큐","fuck","종간나","Tlqkf","ㅗ"] #감지될 욕설 (추가하는방법은 아실꺼라고 믿습니다.)
+
 # for lolplayersearch
 tierScore = {
     'default' : 0,
@@ -258,11 +260,28 @@ async def on_message(message): # on_message() event : when the bot has recieved 
             embed.set_footer(text='Service provided by Hoplin.',
                              icon_url='https://avatars2.githubusercontent.com/u/45956041?s=460&u=1caf3b112111cbd9849a2b95a88c3a8f3a15ecfa&v=4')
             await message.channel.send("Error : Non existing Summoner ", embed=embed)
-
+                       
 @client.event
 async def on_message(message):
     if message.content.startswith("!사이트"):
         await message.channel.send("https://op.gg/")
 
+
+@client.event 
+async def on_message(message):
+    for word in badwords:
+        if message.content.count(word) > 0:
+            await message.channel.purge(limit=1)
+    for word in badwords:
+        author = message.guild.get_member(int(message.author.id))
+        if message.content.count(word) > 0:
+            await message.channel.send(" ")
+
+async def my_background_task():
+    await client.wait_until_ready()
+    while not client.is_closed():
+        client.loop.create_task(my_background_task())
+
+        
 access_token = os.environ["BOT_TOKEN"]
 client.run(access_token)
