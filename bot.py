@@ -259,10 +259,6 @@ async def on_message(message): # on_message() event : when the bot has recieved 
                              icon_url='https://avatars2.githubusercontent.com/u/45956041?s=460&u=1caf3b112111cbd9849a2b95a88c3a8f3a15ecfa&v=4')
             await message.channel.send("Error : Non existing Summoner ", embed=embed)
                        
-@client.event
-async def on_message(message):
-    if message.content.startswith("!사이트"):
-        await message.channel.send("https://op.gg/")
         
 access_token = os.environ["BOT_TOKEN"]
 client.run(access_token)
